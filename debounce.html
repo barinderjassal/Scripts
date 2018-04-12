@@ -1,0 +1,38 @@
+<html>
+    <head>
+        <div id = "id"></div>
+    </head>
+    <body>
+        <script>
+            var ele = document.getElementById('id');
+            var scheduled = false;
+            var debounceTimer;
+            var count = 0;
+            window.addEventListener('mousemove', throttle);
+            function countFn() {
+                count = count + 1;
+                ele.innerText = count;
+            }
+
+            function throttle() {
+                if(!scheduled) {
+                    scheduled = true;
+                    setTimeout(() => {
+                        scheduled = false;
+                        count = count + 1;
+                        ele.innerText = count;
+                        // flag = false;
+                    }, 3000)
+                }
+            }
+
+            function debouce() {
+                clearTimeout(debounceTimer)
+                debounceTimer = setTimeout(() => {
+                    count = count + 1;
+                    ele.innerText = count;
+                }, 1000)
+            }
+        </script>
+    </body>
+</html>
